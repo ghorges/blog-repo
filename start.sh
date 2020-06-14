@@ -1,5 +1,5 @@
 #!/bin/bash
 `hexo clean && hexo deploy`
-`git add .`
+`git add --all .`
 `git commit -m "update blog"`
 `git push`
