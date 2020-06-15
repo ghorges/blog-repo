@@ -7,6 +7,12 @@
   </span>
   <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
 
+  <div class=BbeiAn-info">
+{{ __('陕ICP备')     }} -
+<a href="http://www.beian.miit.gov.cn/">18022587号-1</a>
+</a>
+</div>  
+
   <!--
   {% if theme.post_wordcount.totalcount %}
     <span class="post-meta-divider">|</span>
@@ -46,10 +52,4 @@
   <div class="footer-custom">{#
   #}{{ theme.footer.custom_text }}{#
 #}</div>
-<div class=BbeiAn-info">
-  {{ __('陕ICP备')    }} -                                                                                                                                                  
-        <a href="http://www.beian.miit.gov.cn/">18022587号-1</a>
-                    </a>
-                                      </div>
-
 {% endif %}
