@@ -26,15 +26,16 @@
   <div class="powered-by">{#
   #}{{ __('footer.powered', '<a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a>') }}{#
 #}</div>
-<div class=BbeiAn-info">
-  {{ __('陕ICP备')  }} -
-    <a href="http://www.beian.miit.gov.cn/">18022587号-1</a>
-      </a>
-      </div>
 {% endif %}
 
 {% if theme.footer.powered and theme.footer.theme.enable %}
   <span class="post-meta-divider">|</span>
+<div class=BbeiAn-info">
+  {{ __('陕ICP备')   }} -
+      <a href="http://www.beian.miit.gov.cn/">18022587号-1</a>
+            </a>
+                  </div>
+
 {% endif %}
 -->
 <!--
