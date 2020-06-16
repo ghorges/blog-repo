@@ -12,6 +12,9 @@
   {% include '_third-party/analytics/index.swig' %}
 </head>
 
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+    <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
 
   {% set container_class = "container " %}
