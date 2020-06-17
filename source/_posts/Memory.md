@@ -5,7 +5,7 @@ tags: [文摘]
 ---
 ## Memory
 
-![tip here to listen](https://mp3-joe.club/mp3dl/cats-the-musical-memory.html)
+[tip here to listen](https://mp3-joe.club/mp3dl/cats-the-musical-memory.html)
 
 midnight
 
