@@ -91,5 +91,3 @@ look a new day has begun
 久听不厌，可惜 memory 已经不再进行演出了，只能在网站上看到之前表演的 memory 了，或许这也是一种 memory 吧。
 
 立个 flag：一定要看一场现场版的 《The Phantom Of the Opera》。
-
-注：歌曲为外网下载，如有侵权请联系作者，立刻删除。
