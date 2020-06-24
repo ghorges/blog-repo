@@ -8,11 +8,13 @@
   <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
 
 {% if theme.footer.theme.enable %}
+<!--
 <div class=BbeiAn-info">                                                                                                                                                   
 {{ __('陕ICP备')      }} -
 <a href="http://www.beian.miit.gov.cn/">18022587号-1</a>
 </a>
 </div>
+-->
 {% endif %}
 {% if theme.footer.custom_text %}
   <div class="footer-custom">{#
