@@ -8,7 +8,7 @@ tags: [nsq]
 
 ## 前言
 
-前几周在学习 raft，但由于 raft 需要耗费的周期比较长，打算等到大四了再好好学一学论文和啃一啃 raft 源码（其实我已经把 raft 的 log 层、log 存储、process 等源码啃的差不多了，剩下最难啃的 raft 层和 node 层了。。。），最近先不搞这个了，先认真备战秋招。
+前几周在学习 raft，但由于 raft 需要耗费的周期比较长，打算等到大四了再好好学一学论文和啃一啃 raft 源码（其实我已经把 raft 的 log 层、log 存储、process 等源码啃的差不多了，剩下最难啃的 raft 层和 node 层了。。。），最近不搞这个了，先认真备战秋招。
 
 这两周学习 nsq，是因为之前在公司用到消息队列的场景还挺多的（客户端打点，日志等之类的都会用到），而我基本没学过 java，看不了 kafka，所以把用 go 编写的 nsq 拿来啃一啃。
 
@@ -32,11 +32,11 @@ tree --dirsfirst -L 1 -I '*test*' -P '*.go'
 
 ![image-20200630004832893](/images/image-20200630004832893.png)
 
-获取到传入的参数后，通过调用 GetTopic 获取到此 topicname 对应的 topic。
+获取到传入的参数后，通过调用 GetTopic 获取到此 topicName 对应的 topic。
 
 ![image-20200630005420219](/images/image-20200630005420219.png)
 
-getTopic 这个函数写的还是比较有趣的，在新建了一个 interface 型的变量之后，将 topicName 和 topicChan 传给 newTopicChan 后等待此 interface 变量发送返回的消息。
+GetTopic 这个函数写的还是比较有趣的，在新建了一个 interface 型的变量之后，将 topicName 和 topicChan 传给 newTopicChan 后等待此 interface 变量发送返回的消息。
 
 ![image-20200630005556375](/images/image-20200630005556375.png)
 
@@ -86,7 +86,7 @@ newTopic 接收到消息后，查看这个 topicName 是否在 topicMap 中，�
 
 ![image-20200630023434197](/images/image-20200630023434197.png)
 
-这个函数执行完之后会 break，向上调用可知是 protocol 调用：
+这个函数执行完之后会 break，向上查找可知是 protocol 调用：
 
 ![image-20200630023535944](/images/image-20200630023535944.png)
 
