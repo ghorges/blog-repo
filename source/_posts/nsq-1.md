@@ -8,11 +8,11 @@ tags: [nsq]
 
 ## 前言
 
-前几周在学习 raft，但由于 raft 需要耗费的周期比较长，打算等大四了再好好学一学论文和啃一啃 raft 源码（我已经把 raft 的 log 层、log 存储、process 等源码啃的差不多了，剩下最难啃的 raft 层和 node 层了），最近先不搞这个了，因为毕竟秋招重要。
+前几周在学习 raft，但由于 raft 需要耗费的周期比较长，打算等到大四了再好好学一学论文和啃一啃 raft 源码（其实我已经把 raft 的 log 层、log 存储、process 等源码啃的差不多了，剩下最难啃的 raft 层和 node 层了。。。），最近先不搞这个了，先认真备战秋招。
 
-这两周学习 nsq，因为之前在公司用到消息队列的场景还挺多的（客户端打点，日志等之类的都会用到），而我基本没学过 java，看不了 kafka，所以把用 go 编写的 nsq 拿来啃一啃。
+这两周学习 nsq，是因为之前在公司用到消息队列的场景还挺多的（客户端打点，日志等之类的都会用到），而我基本没学过 java，看不了 kafka，所以把用 go 编写的 nsq 拿来啃一啃。
 
-我看的是比较早期的 nsq，想借此循序渐进。感兴趣的可以在这里下载：[nsq-github](https://github.com/nsqio/nsq/tree/fbf26b502e8a3c407cfb9aa3ceb7076d2632d05e)
+我看的是 nsq 的早期版本，想借此来循序渐进。感兴趣的可以在这里下载：[nsq-github](https://github.com/nsqio/nsq/tree/fbf26b502e8a3c407cfb9aa3ceb7076d2632d05e)
 
 ```
 tree --dirsfirst -L 1 -I '*test*' -P '*.go'
@@ -20,11 +20,11 @@ tree --dirsfirst -L 1 -I '*test*' -P '*.go'
 
 ![image-20200630003836745](/images/image-20200630003836745.png)
 
-通过命令可以看到一共 13 个文件。下面就通过一个消息从消费者通过 http->nsq->consummer 讲解一下消息在 nsq 中的移动过程。第二章详细讲讲每个文件中主要函数的作用。
+通过命令可以看到一共 13 个文件。下面就通过一个消息从消费者通过 http->nsq->consummer 讲解一条消息在 nsq 中的移动过程。下一张详细讲解每个文件中主要函数的作用。敬请期待~
 
 ## msg 移动过程
 
-首先说明一点，这里的代码中只要涉及到 channel 的，都是协程和协程之间的通信。nsq 开始会启动很多协程的。
+首先说明一点，nsg 中只要涉及到 channel 的，都是协程和协程之间的通信。nsq 启动时会启动很多协程的。
 
 ### start
 
@@ -50,11 +50,11 @@ newTopic 接收到消息后，查看这个 topicName 是否在 topicMap 中，�
 
 ![image-20200630011105603](/images/image-20200630011105603.png)
 
-然后在这里调用：
+接下来会在这里调用：
 
 ![image-20200630011637880](/images/image-20200630011637880.png)
 
-如果执行的是 default，则放入 topic 对应的 queue 中（topic 的 queue 是消息过多而设置的，channel 中存的是每一个消费者需要消费的消息，两者有着本质的区别，虽然代码一样），然后存起来。等到合适的时机在从队列取出，然后将消息存入 channel 中的 queue 中（和下面执行几乎一样的代码）。
+如果执行的是 default，则放入 topic 对应的 queue 中（topic 的 queue 是消息过多而设置的，channel 中存的是每一个消费者需要消费的消息，两者有着本质的区别，虽然底层 queue 代码一样），然后存起来。等到合适的时机在从队列取出，然后将消息存入 channel 中的 queue 中（和下面执行几乎一样的代码）。
 
 否则将消息送入 msgChan：
 
@@ -94,12 +94,12 @@ newTopic 接收到消息后，查看这个 topicName 是否在 topicMap 中，�
 
 ![image-20200630023620026](/images/image-20200630023620026.png)
 
-是消费者在 IOLoop 中通过 body 发现客户端的 cmd 是 get 请求，通过反射调用 get 函数后，等待消息的到来。
+消费者在 IOLoop 中通过 body 发现客户端的 cmd 是 get 请求，通过反射调用 get 函数后，等待消息的到来。
 
 还有两个细节需要注意一下：
 
 * 生产者发送时的格式为：http 头 | body，http 头中有 topic 信息，body 中的都是对应的消息。
 * 发送者发送的消息格式为：版本号（4字节，区分唯一的 Protocol）,cmd\r\n cmd\r\n。
-* 发送者接受的消息格式应该为：uuid（唯一区分 msg 用的） + body
+* 发送者接受的消息格式应该为：uuid（唯一区分 msg 用的） + body。
 
 至此流程基本推导完毕。
