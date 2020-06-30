@@ -4,7 +4,7 @@
     {% if theme.gitment.mint %}
         {% set CommentsClass = "Gitmint" %}
         <link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-        <script src="https://jjeejj.github.io/js/gitment.js"></script>
+        <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
     {% else %}
         {% set CommentsClass = "Gitment" %}
         <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
