@@ -241,8 +241,8 @@ chat:
 excerpt_description: true
 
 auto_excerpt: 
-    enable: false #自动截取一定程度的摘要
-    length: 250
+enable: false #自动截取一定程度的摘要
+length: 250
 
 # Read more button
 # If true, the read more button will be displayed in excerpt section.
