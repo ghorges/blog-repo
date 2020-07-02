@@ -42,13 +42,13 @@ NewTopic 是在每次有新 topicName 时调用的，并且每次新建 topic �
 
 ![image-20200702163633711](/images/image-20200702163633711.png)
 
-topicFactory 启动了一个协程，每次有 http连接来的时候会调用 newTopicChan。
+topicFactory 是 main 启动的一个协程，每次有 http连接来的时候会调用 newTopicChan。
 
 ![image-20200702172346576](/images/image-20200702172346576.png)
 
 ## channel.go
 
-channel 和 topic 很多地方代码很像。因为放入队列等操作几乎是一样的，但是不同点也很多。
+channel 和 topic 很多地方代码很像。因为放入队列等操作几乎是一样的，但是不同点也很明显。
 
 当消费者发送的 cmd 为 FIN 和 REQ 的时候，分别会执行这两个函数：
 
@@ -58,7 +58,7 @@ channel 和 topic 很多地方代码很像。因为放入队列等操作几乎�
 
 ![image-20200702173712189](/images/image-20200702173712189.png)
 
-channel 的 Router 中有两个 select，一个是处理消费者发来的信息，另一个是处理 topic 发来的信息。如果不懂可以参考我的注释，关键部分写的挺详细的。
+channel 的 Router 中有两个 select，一个是处理消费者发来的信息，另一个是处理 topic 发来的信息。
 
 ![image-20200702181255128](/images/image-20200702181255128.png)
 
@@ -80,13 +80,13 @@ protocol_v1 的实现中使用了反射机制，将反射的函数执行。
 
 ## client.go
 
-client 中有一个状态机，每次执行 protocol_v1 的函数时，都会改变状态机。注意：上述函数的执行是有序的。
+client 中有一个状态机，每次执行 protocol_v1 的函数时，都会改变状态机。注意：上述函数的执行必须是有序的，否则就会给消费者返回错误。
 
 ![image-20200702181834014](/images/image-20200702181834014.png)
 
 ![image-20200702181908081](/images/image-20200702181908081.png)
 
-client 中还有一个 Handle 是消费者通过 tcp 连接之后处理完毕会进入这里。通过消费者发送的消息判断使用哪个 protocol。
+client 中还有一个 Handle 是消费者通过 tcp 连接并处理完毕后会进入这里。通过消费者发送的消息判断使用哪个 protocol。
 
 ![image-20200702182123785](/images/image-20200702182123785.png)
 
