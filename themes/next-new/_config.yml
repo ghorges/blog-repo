@@ -234,15 +234,15 @@ chat:
 
 # Automatically excerpt description in homepage as preamble text.
 
-#scroll_to_more: true #选取博客正文<!--more-->前的内容
+scroll_to_more: true #选取博客正文<!--more-->前的内容
 
-#save_scroll: false    
+save_scroll: false    
 
-excerpt_description: false
+excerpt_description: true
 
 auto_excerpt: 
-enable: false #自动截取一定程度的摘要
-length: 250
+  enable: true #自动截取一定程度的摘要
+  length: 250
 
 # Read more button
 # If true, the read more button will be displayed in excerpt section.
