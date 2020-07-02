@@ -1,7 +1,7 @@
 ---
 title: Mysql-锁
 date: 2020-06-23 00:03:12
-tags: [mysql]
+tags: [数据库]
 ---
 
 ## Mysql 锁学习记录
