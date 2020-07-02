@@ -364,9 +364,9 @@ codeblock:
   copy_button:
     enable: true
     # Show text copy result.
-    show_result: true
+    show_result: false
     # Available values: default | flat | mac
-    style: mac
+    style:
 
 back2top:
   enable: true
