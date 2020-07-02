@@ -233,7 +233,7 @@ chat:
 # ---------------------------------------------------------------
 
 # Automatically excerpt description in homepage as preamble text.
-excerpt_description: false
+excerpt_description: 250
 
 auto_excerpt: 
     enable: true #自动截取一定程度的摘要
