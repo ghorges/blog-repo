@@ -616,7 +616,7 @@ valine:
   appkey: 0DwW3KORbtYml3EGcNh6Pwop # Your leancloud application appkey
   notify: false # Mail notifier
   verify: false # Verification code
-  placeholder: 有什么疑惑可以写出来哦 # Comment box placeholder
+  placeholder: 有疑惑或心得都可以分享出来哦~ # Comment box placeholder
   avatar: mm # Gravatar style
   guest_info: nick,mail,link # Custom comment header
   pageSize: 10 # Pagination size
