@@ -12,6 +12,8 @@ tags: [nsq]
 
 这两周学习 nsq，是因为之前在公司用到消息队列的场景还挺多的（客户端打点，日志等之类的都会用到），而我基本没学过 java，看不了 kafka，所以把用 go 编写的 nsq 拿来啃一啃。
 
+<!--more-->
+
 我看的是 nsq 的早期版本，想借此来循序渐进。感兴趣的可以在这里下载：[nsq-github](https://github.com/nsqio/nsq/tree/fbf26b502e8a3c407cfb9aa3ceb7076d2632d05e)
 
 ```

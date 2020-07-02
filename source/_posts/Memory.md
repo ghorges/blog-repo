@@ -21,6 +21,8 @@ the withered leaves collect at my feet
 
 and the wind begins to moan
 
+<!--more-->
+
 memory
 
 all alone in the moonlight
