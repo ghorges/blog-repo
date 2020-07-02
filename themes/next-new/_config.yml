@@ -238,7 +238,7 @@ chat:
 
 #save_scroll: false    
 
-excerpt_description: true
+excerpt_description: false
 
 auto_excerpt: 
 enable: false #自动截取一定程度的摘要
