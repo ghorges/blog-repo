@@ -8,6 +8,8 @@ tags: [nsq]
 
 本博客是讲解 nsq 中一些文件中的主要函数的作用，另外，我个人还针对 nsq v0.1.1 版本的相关代码实现做了一些注释笔记，感兴趣的可以自行阅读：[nsq-0.1.1-ghorges](https://github.com/ghorges/nsq-0.1.1-ghorges)
 
+<!--more-->
+
 ## nsq.go
 
 main 函数在这里执行，这里主要启动了 3 个协程（算上主协程共四个）：
