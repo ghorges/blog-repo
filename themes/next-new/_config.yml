@@ -234,9 +234,9 @@ chat:
 
 # Automatically excerpt description in homepage as preamble text.
 
-scroll_to_more: true #选取博客正文<!--more-->前的内容
+#scroll_to_more: true #选取博客正文<!--more-->前的内容
 
-save_scroll: false    
+#save_scroll: false    
 
 excerpt_description: true
 
