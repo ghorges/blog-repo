@@ -160,6 +160,7 @@ sidebar:
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
 
+# 这里先留着       
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
@@ -232,7 +233,7 @@ chat:
 # ---------------------------------------------------------------
 
 # Automatically excerpt description in homepage as preamble text.
-excerpt_description: true
+excerpt_description: false
 
 auto_excerpt: 
     enable: true #自动截取一定程度的摘要
