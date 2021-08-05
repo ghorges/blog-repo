@@ -16,6 +16,8 @@ redis-benchmark -h 127.0.0.1 -p 6379 -c 50 -n 1000 -q georadius outlet 112 -7 20
 
 **注：**本文所用电脑为 MacBook Pro (16-inch, 2019)，cpu 为：Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz，内存为 16 g。
 
+<!--more-->
+
 ## 对 redis 进行满载压力分析
 
 使用 Instruments 对 redis 进行满负荷时分析，压力测试命令如下：
