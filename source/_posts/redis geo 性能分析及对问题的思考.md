@@ -18,6 +18,7 @@ redis-benchmark -h 127.0.0.1 -p 6379 -c 50 -n 1000 -q georadius outlet 112 -7 20
 
 <!--more-->
 
+
 ## 对 redis 进行满载压力分析
 
 使用 Instruments 对 redis 进行满负荷时分析，压力测试命令如下：
@@ -26,7 +27,7 @@ redis-benchmark -h 127.0.0.1 -p 6379 -c 50 -n 1000 -q georadius outlet 112 -7 20
 redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 50000 -q georadius outlet 112 -7 200 km withdist
 ```
 
- 这里说几点建议：
+ 说几点建议：
 
 * 多开几个压测的线程，多个线程并发执行，尽可能的去打满 redis，以遍更直观的看到 redis 的性能瓶颈。
 * 有条件的可以使用两个本地机器去模拟（必须为局域网，~~当然两根网线连着更好~~，非局域网可能会有网速对 redis 性能的影响），使用同一台电脑开启 redis 服务和进行压测时，压测开很多线程，一直发数据也是很消耗 cpu 资源的（这个东西属于 unstable，看内核调度，是不可控的）。所以为了控制变量，让 redis 能更好的发挥效率，推荐使用两个机器。
