@@ -12,12 +12,11 @@ redis-benchmark -h 127.0.0.1 -p 6379 -c 50 -n 1000 -q georadius outlet 112 -7 20
 
 并发数为 50，每个并发发送 1000 个请求，结果如下：
 
-![image-20210726174917453](/Users/yicheng.ma/Library/Application Support/typora-user-images/image-20210726174917453.png)
+![image-20210726174917453](/images/image-20210726174917453.png)
 
 **注：**本文所用电脑为 MacBook Pro (16-inch, 2019)，cpu 为：Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz，内存为 16 g。
 
 <!--more-->
-
 
 ## 对 redis 进行满载压力分析
 
