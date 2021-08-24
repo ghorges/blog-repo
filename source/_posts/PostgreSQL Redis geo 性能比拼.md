@@ -127,9 +127,9 @@ wrk -t12 -c200 -d90s http://127.0.0.1/pg_wrk
 
 ![image-20210818163758572](/images/image-20210818163758572.png)
 
-###使用连接池压测，模拟真实环境
+### 使用连接池压测，模拟真实环境
 
-不用了测了，肯定 redis 快。
+通过上述结果可以肯定，redis 的速度还是会快一些的。
 
 ### buntdb 测试
 
@@ -183,6 +183,29 @@ func GetBuntdb() (index int) {
 ![image-20210823174313700](/images/image-20210823174313700.png)
 
 速度是 buntdb 全盘扫描的 2.5 倍，是 redis 的 5 倍。
+
+#### 修改代码后单线程执行（和 redis 加锁压测一样）
+
+```
+wrk -t12 -c200 -d90s http://127.0.0.1/buntdb_lock_wrk
+```
+
+```
+Running 2m test @ http://127.0.0.1/buntdb_lock_wrk
+  12 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.56s   195.04ms   1.89s    71.96%
+    Req/Sec    16.28     10.13    70.00     72.14%
+  10946 requests in 1.50m, 801.71KB read
+  Socket errors: connect 0, read 51, write 0, timeout 0
+Requests/sec:    121.51
+Transfer/sec:      8.90KB
+```
+
+可以看到，速度慢很多了，所以 buntdb 的优势在于：
+
+* 读写锁保证可以同时执行，而 redis 单线程
+* R-tree 使计算量小
 
 ### 系统资源占用分析
 
