@@ -184,7 +184,26 @@ func GetBuntdb() (index int) {
 
 速度是 buntdb 全盘扫描的 2.5 倍，是 redis 的 5 倍。
 
-#### 修改代码后单线程执行（和 redis 加锁压测一样）
+#### 原始代码单线程执行（和 redis 加锁压测一样）
+
+```
+wrk -t1 -c2 -d30s http://127.0.0.1/buntdb_lock_wrk
+```
+
+```
+Running 30s test @ http://127.0.0.1/buntdb_lock_wrk
+  1 threads and 2 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    77.49ms    2.75ms  92.21ms   82.30%
+    Req/Sec    25.56      4.94    30.00     61.49%
+  774 requests in 30.03s, 56.69KB read
+Requests/sec:     25.77
+Transfer/sec:      1.89KB
+```
+
+qps 比并发执行小了 5 倍。
+
+#### 修改代码后单线程执行（同上）
 
 ```
 wrk -t12 -c200 -d90s http://127.0.0.1/buntdb_lock_wrk
@@ -202,10 +221,11 @@ Requests/sec:    121.51
 Transfer/sec:      8.90KB
 ```
 
-可以看到，速度慢很多了，所以 buntdb 的优势在于：
+同上，速度慢很多了。
 
-* 读写锁保证可以同时执行，而 redis 单线程
-* R-tree 使计算量小
+**所以可以得出 buntdb 相比 redis-geo 的优势在于**
+
+* buntdb读写锁保证可以同时执行，而 redis 单线程
 
 ### 系统资源占用分析
 
